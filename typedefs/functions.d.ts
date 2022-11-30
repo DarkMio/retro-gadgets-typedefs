@@ -47,7 +47,7 @@ type Gadget = {
     PowerButton: PowerButton,
     // the following can be any number of components with their name and number attached
     CPU0?: CPU,
-    Led0?: Led0,
+    Led0?: Led,
     Switch0?: Switch
 
 

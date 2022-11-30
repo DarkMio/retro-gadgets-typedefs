@@ -12,3 +12,10 @@ Defines the API found at https://docs.retrogadgets.game/api/index.html
 - adding typedefs for missing APIs (for example `gdt: Gadget`)
 - generator/descriptor for gadgets (CPU0, CPU1, CPU2 ...)
 - generators for keypad and similar m*n constructs
+
+
+## Examples
+
+
+![](docs/lamp-flipper.gif)  
+`examples/lamp-flipper.ts` switches the lamp every 5 seconds on/off and an LED every 2 seconds

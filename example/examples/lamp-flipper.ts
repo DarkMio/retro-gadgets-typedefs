@@ -1,11 +1,11 @@
 let accum = 0;
 
+
+const flipFlop = (value: number, flipInSeconds: number) => (math.floor(value / flipInSeconds) % 2) == 0 
+
+
 function update() {
     accum  += gdt.CPU0!.DeltaTime
-    // every roughly 5 seconds
-    if(accum > 5) {
-        desk.SetLampState(!desk.GetLampState())
-        // reset stable timer
-        accum = accum % 5
-    }
+    gdt.Led0!.State = flipFlop(accum, 2)
+    desk.SetLampState(flipFlop(accum, 5))
 }

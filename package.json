@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "lua-types": "^2.13.1"
+  }
+}
