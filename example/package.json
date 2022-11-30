@@ -1,0 +1,15 @@
+{
+  "name": "retro-gadets-typedefs",
+  "version": "1.0.0",
+  "description": "Typescript definitions for Retro Gadgets",
+  "scripts": {
+    "build": "tstl",
+    "dev": "tstl --watch"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "typescript-to-lua": "^1.11.1"
+  }
+}

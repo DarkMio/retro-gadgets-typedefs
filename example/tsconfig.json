@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "rootDir": "examples",
+      "outDir": "compiled",
+      "target": "esnext",
+      "lib": ["esnext"],
+      "moduleResolution": "node",
+      "skipLibCheck": true,
+      "strict": true
+    },
+    "include": [
+        "examples/**/*.ts",
+        "../typedefs/**/*.d.ts"
+    ],
+    "tstl": {
+      "luaTarget": "JIT"
+    }
+}
