@@ -23,3 +23,8 @@ Defines the API found at https://docs.retrogadgets.game/api/index.html
 
 ![](docs/bin-clock.gif)  
 `examples/binary-clock.ts` shows a simple counter that slowly counts to 256 and resets
+
+
+![](docs/raytracer.png)  
+`examples/raytracer.ts` is a port of the TypeScript example raytracer
+

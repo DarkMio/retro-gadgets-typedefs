@@ -38,7 +38,7 @@ export type Range<FROM extends number, TO extends number> = Exclude<Enumerate<TO
  */
 declare function NumberedProperty<Name extends string, Count extends number>(): `${Name}${IntRange<0, Count>}`
 type NumberedComponents<Component, Name extends string, Count extends number> = {[k in ReturnType<typeof NumberedProperty<Name, Count>>]: Component};
-type NonNumberedCompontent<Component, Name extends string> = {[Name]: Component};
+type NonNumberedCompontent<Component, Name extends string> = Record<Name, ROM>;
 
 type WithSticks<Count extends number> = NumberedComponents<Stick, 'Stick', Count>;
 type WithDpads<Count extends number> = NumberedComponents<Stick, 'Stick', Count>;
