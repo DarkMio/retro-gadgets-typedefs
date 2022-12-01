@@ -1,35 +1,34 @@
-
 /*
  * Global Methods
  */
 
-declare function Color(r: number, g: number, b: number): color
-declare function ColorRGBA(r: number, g: number, b: number, a: number): color
-declare function ColorHSV(h: number, s: number, v: number): color
+declare function Color(this: void, r: number, g: number, b: number): color
+declare function ColorRGBA(this: void, r: number, g: number, b: number, a: number): color
+declare function ColorHSV(this: void, h: number, s: number, v: number): color
 
-declare function log(message: string): void
-declare function logWarning(message: string): void
-declare function logError(message: string): void
+declare function log(this: void, message: string): void
+declare function logWarning(this: void, message: string): void
+declare function logError(this: void, message: string): void
 
-declare function write(text: string): void
-declare function writeLn(text: string): void
+declare function write(this: void, text: string): void
+declare function writeLn(this: void, text: string): void
 
-declare function setFgColor(colorId: ANSIColors): void
-declare function setBgColor(colorId: ANSIColors): void
-declare function resetFgColor(): void
-declare function resetBgColor(): void
-declare function resetColors(): void
+declare function setFgColor(this: void, colorId: ANSIColors): void
+declare function setBgColor(this: void, colorId: ANSIColors): void
+declare function resetFgColor(this: void, ): void
+declare function resetBgColor(this: void, ): void
+declare function resetColors(this: void, ): void
 
-declare function setCurorPos(column: number, line: number): void
-declare function setCurorX(column: number): void
-declare function setCursorY(line: number): void
-declare function moveCursorX(deltaColumn: number): void
-declare function moveCursorY(deltaLine: number): void
-declare function saveCurosorPos(): void
-declare function restoreCursorPos(): void
+declare function setCurorPos(this: void, column: number, line: number): void
+declare function setCurorX(this: void, column: number): void
+declare function setCursorY(this: void, line: number): void
+declare function moveCursorX(this: void, deltaColumn: number): void
+declare function moveCursorY(this: void, deltaLine: number): void
+declare function saveCurosorPos(this: void): void
+declare function restoreCursorPos(this: void): void
 
-declare function clear(): void
-declare function clearToEndLine(): void
+declare function clear(this: void): void
+declare function clearToEndLine(this: void): void
 
 /*
  * Desk Methods
