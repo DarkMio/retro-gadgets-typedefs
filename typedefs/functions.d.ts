@@ -34,9 +34,9 @@ declare function setFgColor(this: void, colorId: ANSIColors): void
  * Use ANSI colors
  */
 declare function setBgColor(this: void, colorId: ANSIColors): void
-declare function resetFgColor(this: void, ): void
-declare function resetBgColor(this: void, ): void
-declare function resetColors(this: void, ): void
+declare function resetFgColor(this: void): void
+declare function resetBgColor(this: void): void
+declare function resetColors(this: void): void
 
 declare function setCurorPos(this: void, column: number, line: number): void
 declare function setCurorX(this: void, column: number): void
