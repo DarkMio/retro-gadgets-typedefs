@@ -3,7 +3,15 @@
       "rootDir": "examples",
       "outDir": "compiled",
       "target": "esnext",
-      "types": ["lua-types/5.1"],
+      "types": [
+        // this lua library is missing:
+        // coroutine, debug, io, (metatables,) modules, os 
+        "lua-types/core/global",
+        "lua-types/core/math",
+        "lua-types/core/string",
+        "lua-types/core/table",
+        "lua-types/special/5.1"
+      ],
       "lib": ["esnext"],
       "moduleResolution": "node",
       "skipLibCheck": true,
@@ -11,9 +19,11 @@
     },
     "include": [
         "examples/**/*.ts",
-        "../typedefs/**/*.d.ts"
+        "../typedefs/**/*.d.ts",
     ],
     "tstl": {
-      "luaTarget": "JIT"
+      // this is somewhat incorrect, but gives bitshift operators present in
+      // game (but not by default in lua 5.1)
+      "luaTarget": "5.2"
     }
 }

@@ -675,7 +675,10 @@ type SecurityChip = { }
 /**
  * VideoChip rendering mode.
  */
-type VideoChipMode = "SingleBuffer" | "DoubleBuffer"
+enum VideoChipMode {
+    "SingleBuffer",
+    "DoubleBuffer"
+}
 
 type VideoChip = {
     /**
