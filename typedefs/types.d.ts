@@ -1,6 +1,11 @@
+/// <reference path="functions.d.ts">
+/// <reference path="helpers.d.ts">
+
 /*
  * Globals
  */
+
+import { FixedSizeArray, ReadOnlyFixedSizeArray } from "./helpers";
 
 declare namespace color {
     export const black: color;
@@ -37,138 +42,281 @@ type vec3 = {
     Z: number,
 }
 
-type ANSIColors = 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97
+type AnsiBlack = 30;
+type AnsiDarkRed = 31;
+type AnsiDarkGreen = 32;
+type AnsiDarkYellow = 33;
+type AnsiDarkBlue = 34;
+type AnsiDarkMagenta = 35;
+type AnsiDarkCyan = 36;
+type AnsiLightGray = 37;
+type AnsiDarkGray = 90;
+type AnsiRed = 91;
+type AnsiGreen = 92;
+type AnsiOrange = 93;
+type AnsiBlue = 94;
+type AnsiMagenta = 95;
+type AnsiCyan = 96;
+type AnsiWhite = 97;
+
+type ANSIColors = AnsiBlack | AnsiDarkRed | AnsiDarkGreen | AnsiDarkYellow | AnsiDarkBlue | AnsiDarkMagenta | AnsiDarkCyan | AnsiLightGray | AnsiDarkGray | AnsiRed | AnsiGreen | AnsiOrange | AnsiBlue | AnsiMagenta | AnsiCyan | AnsiWhite;
 
 type Desk = {
+    /**
+     * Return true if the lamp is on
+     */
     GetLampState(this: void): boolean;
     SetLampState(this: void, state: boolean): void;
 }
 
+
+type InputSource = { }
 
 
 /*
  * Inputs
  */
 type DirectionalInput = {
-    X: number,
-    Y: number,
-    InputSourceX: InputSource,
-    InputSourceY: InputSource,
+    /**
+     * The position of the stick along the X axis, ranging from -100 to 100
+     * @remark this is a floating point
+     */
+    readonly X: number,
+    /**
+     * The position of the stick along the Y axis, ranging from -100 to 100
+     * @remark this is a floating point
+     */
+    readonly Y: number,
+    InputSourceX?: InputSource,
+    InputSourceY?: InputSource,
 }
 
 type ClickButton = {
-    InputSource: InputSource,
-    readonly ButtonState: boolean,
+    InputSource: InputSource;
+    /**
+     * The pressed/released state of the button.
+     */
+    readonly ButtonState: boolean;
+    /**
+     * A boolean flag which will be true only in the time tick the corresponding button changes it's state to pressed.
+     */
     readonly ButtonDown: boolean,
+    /**
+     * A boolean flag which will be true only in the time tick the corresponding button changes it's state to released.
+     */
     readonly ButtonUp: boolean,
 }
 
 type MovingButton = {
+    /**
+     * The actual positional value of the Knob, ranging from -100 to 100
+     */
     Value: number,
+    /**
+     * `true` if the user is moving the knob
+     */
     readonly IsMoving: boolean
 }
 
 type Stick = DirectionalInput & {
+    InputSourceX: undefined,
+    InputSourceY: undefined,
     StickValueChangeEvent(event: ({X: number, Y: number, Type: string}) => any): void
 }
 
-type DPadValueChangeEvent = DirectionalInput & {
+type DPad = DirectionalInput & {
+    X: 0 | 100 | -100,
+    Y: 0 | 100 | -100,
+    InputSourceX: undefined,
+    InputSourceY: undefined,
     DPadValueChangeEvent(event: ({X: number, Y: number, Type: string}) => any): void
 }
 
 type Keypad = {
-    readonly ButtonState: boolean[][],
-    readonly ButtonsDown: boolean[][],
-    readonly ButtonsUp: boolean[][],
-    ButtonsInputSource: InputSource[][],
-    Symbols: Symbol[][],
+    /**
+     * A multi-dimensional table mapping the state of each button to a boolean value.
+     * The table must be addressed with [column][row]. A value of true means that the
+     * corrisponding button is pressed, a value of false tha the button is in it's released state.
+     * @remark A keypad is in size of [4, 4]
+     */
+    readonly ButtonState: ReadOnlyFixedSizeArray<4, ReadOnlyFixedSizeArray<4, boolean>>,
+    /**
+     * A multi-dimensional table mapping boolean flags which will be true only
+     * in the time tick the corresponding button changes it's state to pressed.
+     * The table must be addressed with [column][row]
+     * @remark A keypad is in size of [4, 4]
+     */
+    readonly ButtonsDown: ReadOnlyFixedSizeArray<4, ReadOnlyFixedSizeArray<4, boolean>>,
+    /**
+     * A multi-dimensional table mapping boolean flags which will be true only
+     * in the time tick the corresponding button changes it's state to released.
+     * The table must be addressed with [column][row]
+     * @remark A keypad is in size of [4, 4]
+     */
+    readonly ButtonsUp: ReadOnlyFixedSizeArray<4, ReadOnlyFixedSizeArray<4, boolean>>,
+    ButtonsInputSource: FixedSizeArray<4, FixedSizeArray<4, undefined>>,
+    Symbols: undefined, // Symbol[][], the docs describe it, but accessing it is a RuntimeError
     KeypadButtonEvent(event: ({X: number, Y: number, ButtonDown: boolean, Type: string}) => any): void
 }
 
 type Knob = MovingButton & {
+    /**
+     * Sent when the value is changed
+     */
     KnobValueChangeEvent(event: ({value: number, Type: string}) => any): void
 }
 
 
 type LedButton = ClickButton & {
+    /**
+     * The lit/unlit state of the Led.
+     */
     LedState: boolean,
+    /**
+     * The color of the Led.
+     */
     LedColor: Color,
-    Symbol: Symbol
+    Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
+    /**
+     * Sent when the LedButton is pressed or released
+     */
     LedButtonEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, Type: string}) => any): void
 
 }
 
 type ScreenButton = ClickButton & {
+    /**
+     * The videochip the screen part of this button is bound to.
+     */
     VideoChip: VideoChip,
     Offset: vec2,
     Width: number,
     Height: number,
+    /**
+     * Sent when the ScreenButton is pressed or released
+     */
     ScreenButtonEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, Type: string}) => any): void
 }
 
 type Slider = MovingButton & {
+    /**
+     * Sent when the value is changed
+     */
     SliderValueChangeEvent(event: ({Value: number, Type: string}) => any): void
 }
 
 type Switch = {
+    /**
+     * The state of this switch.
+     */
     InputSource: InputSource,
     State: boolean,
-    Symbol: Symbol,
+    Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
     SwitchStateChangeEvent(event: ({State: boolean, Type: string}) => any): void
 }
 
 type Webcam = {
+    /**
+     * The VideoChip this camera is streaming contents to.
+     */
     RenderTarget: VideoChip,
     readonly AccessDenied: boolean,
     readonly IsActive: boolean,
     readonly IsAvailable: boolean,
+    /**
+     * Gets the camera RenderBuffer. The render buffer obtained can then be fed to the DrawRenderBuffer method of the VideoChip module.
+     */
     GetRenderBuffer(): RenderBuffer,
     WebcamIsActiveEvent(event: ({IsActive: boolean, IsAvailable: boolean, AccessDenied: boolean, Type: string}) => any): void
 }
-
-
 
 /*
  * Outputs
  */
 type Gauge = {
+    /**
+     * Position 0-100
+     */
     Value: number
 }
 
 type Lcd = {
+    /**
+     * The text to be visualized on the Lcd.
+     */
     Text: string,
+    /**
+     * Background color for the Lcd.
+     */
     BgColor: Color,
+    /**
+     * The color for thew displayed text.
+     */
     TextColor: Color
 }
 
 type Led = {
+    /**
+     * Led on/off state
+     */
     State: boolean,
+    /**
+     * Led color
+     */
     Color: color
 }
 
 type LedMatrix = {
-    States: boolean[][],
-    Colors: color[][]
+    /**
+     * A multi-dimensional table that maps all the Led lit/unlit stattus. Should be addressed with [column][row]
+     * @remark LedMatrix is of size [8, 8]
+     */
+    States: FixedSizeArray<8, FixedSizeArray<8, boolean>>,
+    Colors: FixedSizeArray<8, FixedSizeArray<8, color>>
 }
 
-type LedStrip = {
-    States: boolean[],
-    Colors: color[]
+type LedStrip<N extends number> = {
+    States: FixedSizeArray<N, boolean>,
+    Colors: FixedSizeArray<N, boolean>
 }
+
+type LedStrip8 = LedStrip<8>;
+type LedStrip5 = LedStrip<5>;
+type LedStrip4 = LedStrip<4>;
 
 type Screen = {
+    /**
+     * The videochip this screen is bound to.
+     */
     VideoChip: VideoChip,
     readonly Offset: vec2,
     readonly Width: number,
     readonly Height: number,
 }
 
-type SegmentDisplay = {
-    Status: boolean[][],
-    Colors: color[][],
-    ShowDigit(groupIndex: number,  digit: number),
-    SetDigitColor(groupIndex: number, color: color)
+type SegmentDisplay<N extends number> = {
+    /**
+     * A table that maps the lit/unlit state of all the Leds in the display.
+     */
+    States: FixedSizeArray<N, boolean>,
+    /**
+     * A table that maps the color of all the Leds in the display.
+     */
+    Colors: FixedSizeArray<N, color>,
+    ShowDigit(groupIndex: IntRange<0, N>,  digit: number),
+    SetDigitColor(groupIndex: IntRange<0, N>, color: color)
 }
+
+/**
+ * The clock 7 segment display is addressed on 
+ * 0, 1: hours
+ * 2: double colon
+ * 3, 4: minutes
+ */
+type SegmentDisplay5 = SegmentDisplay<5>;
+type SegmentDisplay4 = SegmentDisplay<4>;
+type SegmentDisplay2 = SegmentDisplay<2>;
+type SegmentDisplay1 = SegmentDisplay<1>;
 
 type Speaker = {
     State: boolean
