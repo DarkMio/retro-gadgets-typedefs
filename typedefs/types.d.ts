@@ -1,11 +1,40 @@
 /*
  * Globals
  */
+
+declare namespace color {
+    export const black: color;
+    export const blue: color;
+    export const clear: color;
+    export const cyan: color;
+    export const gray: color;
+    export const green: color;
+    export const magenta: color;
+    export const red: color;
+    export const white: color;
+    export const yellow: color;
+}
+
 type color = {
     A: number,
     B: number,
     G: number,
     R: number
+}
+
+declare function vec2(this: void, x: number, y: number): vec2
+
+type vec2 = {
+    X: number,
+    Y: number,
+}
+
+declare function vec3(this: void, x: number, y: number, z: number): vec3
+
+type vec3 = {
+    X: number,
+    Y: number,
+    Z: number,
 }
 
 type ANSIColors = 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 90 | 91 | 92 | 93 | 94 | 95 | 96 | 97
