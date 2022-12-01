@@ -21,5 +21,5 @@ Defines the API found at https://docs.retrogadgets.game/api/index.html
 `examples/lamp-flipper.ts` switches the lamp every 5 seconds on/off and an LED every 2 seconds
 
 
-![](docs/bin-clock.gif)
+![](docs/bin-clock.gif)  
 `examples/binary-clock.ts` shows a simple counter that slowly counts to 256 and resets
