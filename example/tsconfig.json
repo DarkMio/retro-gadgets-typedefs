@@ -10,7 +10,7 @@
         "lua-types/core/math",
         "lua-types/core/string",
         "lua-types/core/table",
-        "lua-types/special/5.1"
+        "lua-types/special/5.1",
       ],
       "lib": ["esnext"],
       "moduleResolution": "node",
@@ -19,11 +19,16 @@
     },
     "include": [
         "examples/**/*.ts",
-        "../typedefs/**/*.d.ts",
+        "../typedefs/retro-gadgets.d.ts"
     ],
     "tstl": {
       // this is somewhat incorrect, but gives bitshift operators present in
       // game (but not by default in lua 5.1)
-      "luaTarget": "5.2"
+      "luaTarget": "5.2",
+      "luaLibImport": "require",
+      "noImplicitSelf": true,
+      "noHeader": true,
+      "luaBundle": "./compiled/gameboy.lua",
+      "luaBundleEntry": "./examples/gameboy/device.ts"
     }
 }
