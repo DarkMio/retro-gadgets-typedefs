@@ -38,7 +38,7 @@ const expandSourceNode = (node) => {
  */
  const delLocalForFunction = (node, name) => {
     const exp = expandSourceNode(node)
-    if (exp.startsWith(`local function ${name}()`)) {
+    if (exp.startsWith(`local function ${name}(`)) {
         return delLocalFromSourceNode(node, name)
     }
     return node
