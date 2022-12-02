@@ -119,7 +119,6 @@ type MovingButton = {
 type Stick = DirectionalInput & {
     InputSourceX: undefined,
     InputSourceY: undefined,
-    StickValueChangeEvent(event: ({X: number, Y: number, Type: string}) => any): void
 }
 
 type DPad = DirectionalInput & {
@@ -127,7 +126,6 @@ type DPad = DirectionalInput & {
     Y: 0 | 100 | -100,
     InputSourceX: undefined,
     InputSourceY: undefined,
-    DPadValueChangeEvent(event: ({X: number, Y: number, Type: string}) => any): void
 }
 
 type Keypad = {
@@ -154,16 +152,9 @@ type Keypad = {
     readonly ButtonsUp: ReadOnlyFixedSizeArray<4, ReadOnlyFixedSizeArray<4, boolean>>,
     ButtonsInputSource: FixedSizeArray<4, FixedSizeArray<4, undefined>>,
     Symbols: undefined, // Symbol[][], the docs describe it, but accessing it is a RuntimeError
-    KeypadButtonEvent(event: ({X: number, Y: number, ButtonDown: boolean, Type: string}) => any): void
 }
 
-type Knob = MovingButton & {
-    /**
-     * Sent when the value is changed
-     */
-    KnobValueChangeEvent(event: ({value: number, Type: string}) => any): void
-}
-
+type Knob = MovingButton;
 
 type LedButton = ClickButton & {
     /**
@@ -175,11 +166,6 @@ type LedButton = ClickButton & {
      */
     LedColor: Color,
     Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
-    /**
-     * Sent when the LedButton is pressed or released
-     */
-    LedButtonEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, Type: string}) => any): void
-
 }
 
 type ScreenButton = ClickButton & {
@@ -189,19 +175,10 @@ type ScreenButton = ClickButton & {
     VideoChip: VideoChip,
     Offset: vec2,
     Width: number,
-    Height: number,
-    /**
-     * Sent when the ScreenButton is pressed or released
-     */
-    ScreenButtonEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, Type: string}) => any): void
+    Height: number
 }
 
-type Slider = MovingButton & {
-    /**
-     * Sent when the value is changed
-     */
-    SliderValueChangeEvent(event: ({Value: number, Type: string}) => any): void
-}
+type Slider = MovingButton;
 
 type Switch = {
     /**
@@ -210,7 +187,6 @@ type Switch = {
     InputSource: InputSource,
     State: boolean,
     Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
-    SwitchStateChangeEvent(event: ({State: boolean, Type: string}) => any): void
 }
 
 type Webcam = {
@@ -224,8 +200,7 @@ type Webcam = {
     /**
      * Gets the camera RenderBuffer. The render buffer obtained can then be fed to the DrawRenderBuffer method of the VideoChip module.
      */
-    GetRenderBuffer(): RenderBuffer,
-    WebcamIsActiveEvent(event: ({IsActive: boolean, IsAvailable: boolean, AccessDenied: boolean, Type: string}) => any): void
+    GetRenderBuffer(): RenderBuffer
 }
 
 /*
@@ -464,9 +439,7 @@ type GamepadChip = {
     readonly IsActive: number,
     GetButton(name: InputName): InputSource,
     GetAxis(name: InputName): InputSource,
-    GetButtonAxis(negativeNAme: InputName, positiveName: InputName): InputSource,
-    GamepadChipIsActiveEvent(event: ({IsActive: boolean, Type: string}) => any): void,
-    GamepadChipButtonEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, IsAxis: boolean, InputName: InputName, Type: string}) => any): void
+    GetButtonAxis(negativeNAme: InputName, positiveName: InputName): InputSource
 }
 
 type KeyboardButtonName = "KeyboardChip.Return" | 
@@ -606,8 +579,7 @@ type KeyboardButtonName = "KeyboardChip.Return" |
 
 type KeyboardChip = {
     GetButton(name: KeyboardButtonName): InputSource,
-    GetButtonAxis(negativeName: KeyboardButtonName, positiveName: KeyboardButtonName): InputSource,
-    KeyboardChipEvent(event: ({ButtonDown: boolean, ButtonUp: boolean, InputName: KeyboardButtonName, Type: string}) => any): void
+    GetButtonAxis(negativeName: KeyboardButtonName, positiveName: KeyboardButtonName): InputSource
 }
 
 type MagneticConnector = {
@@ -675,7 +647,7 @@ type SecurityChip = { }
 /**
  * VideoChip rendering mode.
  */
-enum VideoChipMode {
+declare enum VideoChipMode {
     "SingleBuffer",
     "DoubleBuffer"
 }
@@ -809,12 +781,179 @@ type Wifi = {
     /**
      * Only cookies that apply to this url will be removed from the cache
      */
-    GetUrlCookieCache(url: string),
-    /**
-     * Sent when a web request is completed
-     */
-    WifiWebResponseVent(event: ({RequestHandle: number, ResponseCode: number, IsError: boolean, ErrorType: string, ErrorMessage: string, ContentType: string, Text: string, Type: string }) => any): void
+    GetUrlCookieCache(url: string)
 }
+
+
+/**
+ * Collection of event payloads
+ */
+ type StickValueChangeEvent = {
+    X: number,
+    Y: number,
+    Type: "StickValueChangeEvent"
+};
+type DPadValueChangeEvent = {
+    X: number,
+    Y: number,
+    Type: "DPadValueChangeEvent"
+};
+type KeypadButtonEvent = {
+    X: number,
+    Y: number,
+    ButtonDown: boolean,
+    Type: "KeypadButtonEvent"
+};
+type KnobValueChangeEvent = {
+    value: number,
+    Type: "KnobValueChangeEvent"
+};
+type LedButtonEvent = {
+    ButtonDown: boolean,
+    ButtonUp: boolean,
+    Type: "LedButtonEvent"
+};
+type ScreenButtonEvent = {
+    ButtonDown: boolean,
+    ButtonUp: boolean,
+    Type: "ScreenButtonEvent"
+};
+type SliderValueChangeEvent = {
+    Value: number,
+    Type: "SliderValueChangeEvent"
+};
+type SwitchStateChangeEvent = {
+    State: boolean,
+    Type: "SwitchStateChangeEvent"
+};
+
+type WebcamIsActiveEvent = {
+    IsActive: boolean,
+    IsAvailable: boolean,
+    AccessDenied: boolean,
+    Type: "WebcamIsActiveEvent"
+}
+
+type KeyboardChipEvent = {
+    ButtonDown: boolean,
+    ButtonUp: boolean,
+    InputName: KeyboardButtonName,
+    Type: "KeyboardChipEvent"
+}
+
+type GamepadChipButtonEvent = {
+    ButtonDown: boolean,
+    ButtonUp: boolean,
+    IsAxis: boolean,
+    InputName: InputName,
+    Type: "GamepadChipButtonEvent"
+}
+
+type GamepadChipIsActiveEvent = {
+    IsActive: boolean,
+    Type: "GamepadChipIsActiveEvent"
+}
+
+type WifiWebResponseEvent = {
+    RequestHandle: number,
+    ResponseCode: number,
+    IsError: boolean,
+    ErrorType: string,
+    ErrorMessage: string,
+    ContentType: string,
+    Text: string,
+    Type: "WifiWebResponseEvent"
+}
+
+type EventSources = Wifi |
+    KeyboardChip |
+    GamepadChip |
+    Slider |
+    ScreenButton |
+    Knob |
+    Keypad |
+    DPad |
+    Stick |
+    Webcam;
+type EventTypes = StickValueChangeEvent |
+    DPadValueChangeEvent |
+    KeypadButtonEvent |
+    KnobValueChangeEvent |
+    LedButtonEvent |
+    ScreenButtonEvent |
+    SliderValueChangeEvent |
+    SwitchStateChangeEvent |
+    WebcamIsActiveEvent | 
+    KeyboardChipEvent |
+    GamepadChipButtonEvent |
+    GamepadChipIsActiveEvent |
+    WifiWebResponseEvent;
+
+declare let eventChannel1: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel2: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel3: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel4: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel5: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel6: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel7: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel8: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel9: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel10: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel11: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel12: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel13: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel14: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel15: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel16: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel17: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel18: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel19: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel20: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel21: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel22: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel23: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel24: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel25: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel26: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel27: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel28: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel29: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel30: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel31: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel32: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel33: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel34: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel35: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel36: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel37: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel38: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel39: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel40: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel41: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel42: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel43: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel44: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel45: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel46: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel47: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel48: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel49: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel50: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel51: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel52: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel53: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel54: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel55: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel56: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel57: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel58: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel59: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel60: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel61: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel62: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel63: (sender: EventSources, arg: EventTypes) => any;
+declare let eventChannel64: (sender: EventSources, arg: EventTypes) => any;
+
 
 /*
  * Assets

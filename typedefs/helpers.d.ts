@@ -16,7 +16,6 @@ type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumer
  * An array in a fixed size of `N` of type `T`
  */
 type FixedSizeArray<N extends number, T> = {
-    //@ts-expect-error not sure how to fix this but the type still works if we just ignore the error
     readonly [k in Enumerate<N>]: T;
 } & { length: N };
 
