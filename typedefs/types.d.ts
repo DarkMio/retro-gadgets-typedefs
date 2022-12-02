@@ -1,6 +1,11 @@
 /// <reference path="functions.d.ts">
 /// <reference path="helpers.d.ts">
 
+/**
+ * Imports
+ */
+import { ReadOnlyFixedSizeArray, FixedSizeArray, IntRange } from "./helpers";
+
 /*
  * Globals
  */
@@ -157,16 +162,16 @@ type Keypad = {
 type Knob = MovingButton;
 
 type LedButton = ClickButton & {
-    /**
-     * The lit/unlit state of the Led.
-     */
-    LedState: boolean,
-    /**
-     * The color of the Led.
-     */
-    LedColor: Color,
-    Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
-}
+	/**
+	 * The lit/unlit state of the Led.
+	 */
+	LedState: boolean;
+	/**
+	 * The color of the Led.
+	 */
+	LedColor: color;
+	Symbol: undefined; // Symbol, the docs describe it, but accessing it is a RuntimeError
+};
 
 type ScreenButton = ClickButton & {
     /**
@@ -214,19 +219,19 @@ type Gauge = {
 }
 
 type Lcd = {
-    /**
-     * The text to be visualized on the Lcd.
-     */
-    Text: string,
-    /**
-     * Background color for the Lcd.
-     */
-    BgColor: Color,
-    /**
-     * The color for thew displayed text.
-     */
-    TextColor: Color
-}
+	/**
+	 * The text to be visualized on the Lcd.
+	 */
+	Text: string;
+	/**
+	 * Background color for the Lcd.
+	 */
+	BgColor: color;
+	/**
+	 * The color for thew displayed text.
+	 */
+	TextColor: color;
+};
 
 type Led = {
     /**
@@ -276,8 +281,8 @@ type SegmentDisplay<N extends number> = {
      * A table that maps the color of all the Leds in the display.
      */
     Colors: FixedSizeArray<N, color>,
-    ShowDigit(groupIndex: IntRange<0, N>,  digit: number),
-    SetDigitColor(groupIndex: IntRange<0, N>, color: color)
+    ShowDigit(groupIndex: IntRange<1, N>,  digit: number),
+    SetDigitColor(groupIndex: IntRange<1, N>, color: color)
 }
 
 /**
@@ -368,11 +373,11 @@ type AudioChip = {
     /**
      * Sets the current `volume` for a `channel`, 0-100 range.
      */
-    SetChannelVolume(volume: IntRange<0, 100>, channel: number),
+    SetChannelVolume(volume: IntRange<0, 101>, channel: number),
     /**
      * Gets the current volume for a channel, 0-100 range.
      */
-    GetChannelVolume(volume: number): IntRange<0, 100>,
+    GetChannelVolume(volume: number): IntRange<0, 101>,
     /**
      * Sets the `pitch` for a `channel`. Acts as a multiplier.
      * A value of 1 means the default `pitch` for a sample,
@@ -967,9 +972,8 @@ type RenderBuffer = {
 
 }
 
-type Code = {
-
-}
+type Code = {}
+type Asset = {}
 
 type AudioSample = {
     SamplesCount: number,
@@ -985,3 +989,31 @@ type Palette = {
 
 }
 
+// Can be any of the components (aka. modules)
+type Module =
+	| Stick
+	| Keypad
+	| Knob
+	| LedButton
+	| ScreenButton
+	| Slider
+	| Switch
+	| Webcam
+	| Gauge
+	| Lcd
+	| Led
+	| LedMatrix
+	| Screen
+	| Speaker
+	| AudioChip
+	| CPU
+	| Decoration
+	| FlashMemory<any>
+	| GamepadChip
+	| MagneticConnector
+	| PowerButton
+	| RealityChip
+	| ROM
+	| SecurityChip
+	| VideoChip
+	| Wifi;

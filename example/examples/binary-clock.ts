@@ -1,7 +1,8 @@
+import { Gadget } from "../../typedefs/functions";
 import { IntRange, WithLedStrip, WithSegmentDisplay } from "../../typedefs/helpers";
 
 // board definition
-type Board = Gadget & WithLedStrip<8> & WithSegmentDisplay<4>;
+type Board = Gadget & WithLedStrip<8> & WithSegmentDisplay<5>;
 declare const gdt: Board;
 
 // helper methods
@@ -17,8 +18,8 @@ const LEDCount = 8;
 const DisplayColor = ColorRGBA(0, 255, 0, 255);
 
 // setup
-for(let i = 0; i < 4; i++) {
-    gdt.SegmentDisplay0.SetDigitColor(i + 1, DisplayColor);
+for(let i = 1; i <= 4; i++) {
+    gdt.SegmentDisplay0.SetDigitColor(i as 1 | 2 | 3 | 4, DisplayColor);
 }
 
 // update loop
@@ -26,7 +27,7 @@ let accum = 0;
 update = () => {
     accum  += gdt.CPU0!.DeltaTime;
     for(let i = 0; i < LEDCount; i++) {
-        gdt.LedStrip0.States[i + 1] = isOn(accum * 2, i + 1 as IntRange<0, 8>);    
+        (gdt.LedStrip0.States[(i + 1 as IntRange<0, 8>)] as boolean) = isOn(accum * 2, i + 1 as IntRange<0, 8>);    
     }
     gdt.SegmentDisplay0.ShowDigit(2, math.floor(accum % 1000 / 100));
     gdt.SegmentDisplay0.ShowDigit(3, math.floor(accum % 100 / 10));
