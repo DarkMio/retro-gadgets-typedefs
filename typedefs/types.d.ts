@@ -281,8 +281,8 @@ type SegmentDisplay<N extends number> = {
      * A table that maps the color of all the Leds in the display.
      */
     Colors: FixedSizeArray<N, color>,
-    ShowDigit(groupIndex: IntRange<0, N>,  digit: number),
-    SetDigitColor(groupIndex: IntRange<0, N>, color: color)
+    ShowDigit(groupIndex: IntRange<1, N>,  digit: number),
+    SetDigitColor(groupIndex: IntRange<1, N>, color: color)
 }
 
 /**
