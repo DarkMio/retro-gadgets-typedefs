@@ -373,11 +373,11 @@ type AudioChip = {
     /**
      * Sets the current `volume` for a `channel`, 0-100 range.
      */
-    SetChannelVolume(volume: IntRange<0, 100>, channel: number),
+    SetChannelVolume(volume: IntRange<0, 101>, channel: number),
     /**
      * Gets the current volume for a channel, 0-100 range.
      */
-    GetChannelVolume(volume: number): IntRange<0, 100>,
+    GetChannelVolume(volume: number): IntRange<0, 101>,
     /**
      * Sets the `pitch` for a `channel`. Acts as a multiplier.
      * A value of 1 means the default `pitch` for a sample,

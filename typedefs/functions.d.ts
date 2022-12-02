@@ -11,18 +11,18 @@ import { color, ANSIColors, Desk, PowerButton } from "./types";
 /**
  * Compose and returns a RGB Color object. Values for the 3 channels are always expressed in the range 0-255.
  */
-declare function Color(this: void, r: IntRange<0, 255>, g: IntRange<0, 255>, b: IntRange<0, 255>): color
+declare function Color(this: void, r: IntRange<0, 256>, g: IntRange<0, 256>, b: IntRange<0, 256>): color
 /**
  * Compose and returns a RGB Color object, with Alpha. Values for the 4 channels are always expressed in the range 0-255. Alpha 0 is transparent
  */
-declare function ColorRGBA(this: void, r: IntRange<0, 255>, g: IntRange<0, 255>, b: IntRange<0, 255>, a: IntRange<0, 255>): color
+declare function ColorRGBA(this: void, r: IntRange<0, 256>, g: IntRange<0, 256>, b: IntRange<0, 256>, a: IntRange<0, 256>): color
 /**
  * Compose and returns a RGB Color Object, expressing it in HSV values.
  * @param h [0-360] 
  * @param s [0-100]
  * @param v [0-100]
  */
-declare function ColorHSV(this: void, h: IntRange<0, 360>, s: IntRange<0, 100>, v: IntRange<0, 100>): color
+declare function ColorHSV(this: void, h: IntRange<0, 361>, s: IntRange<0, 101>, v: IntRange<0, 101>): color
 
 
 declare function log(this: void, message: string): void
