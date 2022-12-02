@@ -11,7 +11,7 @@ declare namespace color {
     export const yellow: color;
 }
 
-type color = {
+type color = ModuleBrand & {
     A: number,
     B: number,
     G: number,
@@ -20,25 +20,17 @@ type color = {
 
 declare function vec2(this: void, x: number, y: number): vec2
 
-type vec2 = {
+type vec2 = ModuleBrand & {
     X: number,
-    Y: number,
-    /**
-     * virtual property to prevent accidential instantiation through object literals
-     */
-    __brand: never
+    Y: number
 }
 
 declare function vec3(this: void, x: number, y: number, z: number): vec3
 
-type vec3 = {
+type vec3 = ModuleBrand & {
     X: number,
     Y: number,
-    Z: number,
-    /**
-     * virtual property to prevent accidential instantiation through object literals
-     */
-    __brand: never
+    Z: number
 }
 
 type AnsiBlack = 30;

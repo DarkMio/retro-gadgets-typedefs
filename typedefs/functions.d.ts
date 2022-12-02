@@ -1,6 +1,6 @@
-/*
- * Global Methods
- */
+/// Global Methods
+/// https://docs.retrogadgets.game/api/methods/globalMethods.md.html
+
 
 /**
  * Compose and returns a RGB Color object. Values for the 3 channels are always expressed in the range 0-255.

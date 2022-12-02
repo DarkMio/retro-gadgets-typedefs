@@ -1,9 +1,8 @@
+/// Events
+/// the payloads have a common "Type" name, the event channels go from 1-4, 1-16, 1-64 depending on CPU
+/// all CPUs share the same magic eventChannelXX callback bus
 
-
-/**
- * Collection of event payloads
- */
- type StickValueChangeEvent = {
+type StickValueChangeEvent = {
     X: number,
     Y: number,
     Type: "StickValueChangeEvent"
@@ -47,28 +46,24 @@ type WebcamIsActiveEvent = {
     IsAvailable: boolean,
     AccessDenied: boolean,
     Type: "WebcamIsActiveEvent"
-}
-
+};
 type KeyboardChipEvent = {
     ButtonDown: boolean,
     ButtonUp: boolean,
     InputName: KeyboardButtonName,
     Type: "KeyboardChipEvent"
-}
-
+};
 type GamepadChipButtonEvent = {
     ButtonDown: boolean,
     ButtonUp: boolean,
     IsAxis: boolean,
     InputName: InputName,
     Type: "GamepadChipButtonEvent"
-}
-
+};
 type GamepadChipIsActiveEvent = {
     IsActive: boolean,
     Type: "GamepadChipIsActiveEvent"
-}
-
+};
 type WifiWebResponseEvent = {
     RequestHandle: number,
     ResponseCode: number,
@@ -78,8 +73,7 @@ type WifiWebResponseEvent = {
     ContentType: string,
     Text: string,
     Type: "WifiWebResponseEvent"
-}
-
+};
 type EventSources = Wifi |
     KeyboardChip |
     GamepadChip |
@@ -98,7 +92,7 @@ type EventTypes = StickValueChangeEvent |
     ScreenButtonEvent |
     SliderValueChangeEvent |
     SwitchStateChangeEvent |
-    WebcamIsActiveEvent | 
+    WebcamIsActiveEvent |
     KeyboardChipEvent |
     GamepadChipButtonEvent |
     GamepadChipIsActiveEvent |

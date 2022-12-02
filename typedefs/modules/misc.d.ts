@@ -1,7 +1,6 @@
+/// Misc
+/// https://docs.retrogadgets.game/api/moduleCategories/Misc.html
 
-/*
- * Misc
- */
 type AudioChip = {
     /**
      * Number of available channels for this AudioChip. Each channel can independently play an audio sample.
@@ -103,7 +102,7 @@ type CPU = {
     EventChannels: Module[]
 }
 
-type Decoration = { }
+type Decoration = {}
 
 type FlashMemory<T> = {
     readonly Size: number,
@@ -113,27 +112,27 @@ type FlashMemory<T> = {
 }
 
 type InputName = "GamepadChip.LeftStickX" |
-    "GamepadChip.LeftStickY" | 
-    "GamepadChip.RightStickX" | 
-    "GamepadChip.RightStickY" | 
-    "GamepadChip.ActionBottomRow1" | 
-    "GamepadChip.ActionBottomRow2" | 
-    "GamepadChip.ActionBottomRow3" | 
-    "GamepadChip.ActionTopRow1" | 
-    "GamepadChip.ActionTopRow2" | 
-    "GamepadChip.ActionTopRow3" | 
-    "GamepadChip.LeftShoulder1" | 
-    "GamepadChip.LeftShoulder2" | 
-    "GamepadChip.RightShoulder1" | 
-    "GamepadChip.RightShoulder2" | 
-    "GamepadChip.Center1" | 
-    "GamepadChip.Center2" | 
-    "GamepadChip.Center3" | 
-    "GamepadChip.LeftStickButton" | 
-    "GamepadChip.RightStickButton" | 
-    "GamepadChip.DPadUp" | 
-    "GamepadChip.DPadRight" | 
-    "GamepadChip.DPadDown" | 
+    "GamepadChip.LeftStickY" |
+    "GamepadChip.RightStickX" |
+    "GamepadChip.RightStickY" |
+    "GamepadChip.ActionBottomRow1" |
+    "GamepadChip.ActionBottomRow2" |
+    "GamepadChip.ActionBottomRow3" |
+    "GamepadChip.ActionTopRow1" |
+    "GamepadChip.ActionTopRow2" |
+    "GamepadChip.ActionTopRow3" |
+    "GamepadChip.LeftShoulder1" |
+    "GamepadChip.LeftShoulder2" |
+    "GamepadChip.RightShoulder1" |
+    "GamepadChip.RightShoulder2" |
+    "GamepadChip.Center1" |
+    "GamepadChip.Center2" |
+    "GamepadChip.Center3" |
+    "GamepadChip.LeftStickButton" |
+    "GamepadChip.RightStickButton" |
+    "GamepadChip.DPadUp" |
+    "GamepadChip.DPadRight" |
+    "GamepadChip.DPadDown" |
     "GamepadChip.DPadLeft";
 
 type GamepadChip = {
@@ -144,139 +143,139 @@ type GamepadChip = {
     GetButtonAxis(negativeName: InputName, positiveName: InputName): InputSource
 }
 
-type KeyboardButtonName = "KeyboardChip.Return" | 
-    "KeyboardChip.Space" | 
-    "KeyboardChip.LeftArrow" | 
-    "KeyboardChip.RightArrow" | 
-    "KeyboardChip.DownArrow" | 
-    "KeyboardChip.UpArrow" | 
-    "KeyboardChip.Backspace" | 
-    "KeyboardChip.Escape" | 
-    "KeyboardChip.Tab" | 
-    "KeyboardChip.Clear" | 
-    "KeyboardChip.Pause" | 
-    "KeyboardChip.Exclaim" | 
-    "KeyboardChip.DoubleQuote" | 
-    "KeyboardChip.Hash" | 
-    "KeyboardChip.Dollar" | 
-    "KeyboardChip.Percent" | 
-    "KeyboardChip.Ampersand" | 
-    "KeyboardChip.Quote" | 
-    "KeyboardChip.LeftParen" | 
-    "KeyboardChip.RightParen" | 
-    "KeyboardChip.Asterisk" | 
-    "KeyboardChip.Plus" | 
-    "KeyboardChip.Comma" | 
-    "KeyboardChip.Minus" | 
-    "KeyboardChip.Period" | 
-    "KeyboardChip.Slash" | 
-    "KeyboardChip.Alpha0" | 
-    "KeyboardChip.Alpha1" | 
-    "KeyboardChip.Alpha2" | 
-    "KeyboardChip.Alpha3" | 
-    "KeyboardChip.Alpha4" | 
-    "KeyboardChip.Alpha5" | 
-    "KeyboardChip.Alpha6" | 
-    "KeyboardChip.Alpha7" | 
-    "KeyboardChip.Alpha8" | 
-    "KeyboardChip.Alpha9" | 
-    "KeyboardChip.Colon" | 
-    "KeyboardChip.Semicolon" | 
-    "KeyboardChip.Less" | 
-    "KeyboardChip.Equals" | 
-    "KeyboardChip.Greater" | 
-    "KeyboardChip.Question" | 
-    "KeyboardChip.At" | 
-    "KeyboardChip.LeftBracket" | 
-    "KeyboardChip.Backslash" | 
-    "KeyboardChip.RightBracket" | 
-    "KeyboardChip.Caret" | 
-    "KeyboardChip.Underscore" | 
-    "KeyboardChip.BackQuote" | 
-    "KeyboardChip.A" | 
-    "KeyboardChip.B" | 
-    "KeyboardChip.C" | 
-    "KeyboardChip.D" | 
-    "KeyboardChip.E" | 
-    "KeyboardChip.F" | 
-    "KeyboardChip.G" | 
-    "KeyboardChip.H" | 
-    "KeyboardChip.I" | 
-    "KeyboardChip.J" | 
-    "KeyboardChip.K" | 
-    "KeyboardChip.L" | 
-    "KeyboardChip.M" | 
-    "KeyboardChip.N" | 
-    "KeyboardChip.O" | 
-    "KeyboardChip.P" | 
-    "KeyboardChip.Q" | 
-    "KeyboardChip.R" | 
-    "KeyboardChip.S" | 
-    "KeyboardChip.T" | 
-    "KeyboardChip.U" | 
-    "KeyboardChip.V" | 
-    "KeyboardChip.W" | 
-    "KeyboardChip.X" | 
-    "KeyboardChip.Y" | 
-    "KeyboardChip.Z" | 
-    "KeyboardChip.LeftCurlyBracket" | 
-    "KeyboardChip.Pipe" | 
-    "KeyboardChip.RightCurlyBracket" | 
-    "KeyboardChip.Tilde" | 
-    "KeyboardChip.Delete" | 
-    "KeyboardChip.Keypad0" | 
-    "KeyboardChip.Keypad1" | 
-    "KeyboardChip.Keypad2" | 
-    "KeyboardChip.Keypad3" | 
-    "KeyboardChip.Keypad4" | 
-    "KeyboardChip.Keypad5" | 
-    "KeyboardChip.Keypad6" | 
-    "KeyboardChip.Keypad7" | 
-    "KeyboardChip.Keypad8" | 
-    "KeyboardChip.Keypad9" | 
-    "KeyboardChip.KeypadPeriod" | 
-    "KeyboardChip.KeypadDivide" | 
-    "KeyboardChip.KeypadMultiply" | 
-    "KeyboardChip.KeypadMinus" | 
-    "KeyboardChip.KeypadPlus" | 
-    "KeyboardChip.KeypadEnter" | 
-    "KeyboardChip.KeypadEquals" | 
-    "KeyboardChip.Insert" | 
-    "KeyboardChip.Home" | 
-    "KeyboardChip.End" | 
-    "KeyboardChip.PageUp" | 
-    "KeyboardChip.PageDown" | 
-    "KeyboardChip.F1" | 
-    "KeyboardChip.F2" | 
-    "KeyboardChip.F3" | 
-    "KeyboardChip.F4" | 
-    "KeyboardChip.F5" | 
-    "KeyboardChip.F6" | 
-    "KeyboardChip.F7" | 
-    "KeyboardChip.F8" | 
-    "KeyboardChip.F9" | 
-    "KeyboardChip.F10" | 
-    "KeyboardChip.F11" | 
-    "KeyboardChip.F12" | 
-    "KeyboardChip.F13" | 
-    "KeyboardChip.F14" | 
-    "KeyboardChip.F15" | 
-    "KeyboardChip.Numlock" | 
-    "KeyboardChip.CapsLock" | 
-    "KeyboardChip.ScrollLock" | 
-    "KeyboardChip.RightShift" | 
-    "KeyboardChip.LeftShift" | 
-    "KeyboardChip.RightControl" | 
-    "KeyboardChip.LeftControl" | 
-    "KeyboardChip.RightAlt" | 
-    "KeyboardChip.LeftAlt" | 
-    "KeyboardChip.RightCommand" | 
-    "KeyboardChip.LeftCommand" | 
-    "KeyboardChip.AltGr" | 
-    "KeyboardChip.Help" | 
-    "KeyboardChip.Print" | 
-    "KeyboardChip.SysReq" | 
-    "KeyboardChip.Break" | 
+type KeyboardButtonName = "KeyboardChip.Return" |
+    "KeyboardChip.Space" |
+    "KeyboardChip.LeftArrow" |
+    "KeyboardChip.RightArrow" |
+    "KeyboardChip.DownArrow" |
+    "KeyboardChip.UpArrow" |
+    "KeyboardChip.Backspace" |
+    "KeyboardChip.Escape" |
+    "KeyboardChip.Tab" |
+    "KeyboardChip.Clear" |
+    "KeyboardChip.Pause" |
+    "KeyboardChip.Exclaim" |
+    "KeyboardChip.DoubleQuote" |
+    "KeyboardChip.Hash" |
+    "KeyboardChip.Dollar" |
+    "KeyboardChip.Percent" |
+    "KeyboardChip.Ampersand" |
+    "KeyboardChip.Quote" |
+    "KeyboardChip.LeftParen" |
+    "KeyboardChip.RightParen" |
+    "KeyboardChip.Asterisk" |
+    "KeyboardChip.Plus" |
+    "KeyboardChip.Comma" |
+    "KeyboardChip.Minus" |
+    "KeyboardChip.Period" |
+    "KeyboardChip.Slash" |
+    "KeyboardChip.Alpha0" |
+    "KeyboardChip.Alpha1" |
+    "KeyboardChip.Alpha2" |
+    "KeyboardChip.Alpha3" |
+    "KeyboardChip.Alpha4" |
+    "KeyboardChip.Alpha5" |
+    "KeyboardChip.Alpha6" |
+    "KeyboardChip.Alpha7" |
+    "KeyboardChip.Alpha8" |
+    "KeyboardChip.Alpha9" |
+    "KeyboardChip.Colon" |
+    "KeyboardChip.Semicolon" |
+    "KeyboardChip.Less" |
+    "KeyboardChip.Equals" |
+    "KeyboardChip.Greater" |
+    "KeyboardChip.Question" |
+    "KeyboardChip.At" |
+    "KeyboardChip.LeftBracket" |
+    "KeyboardChip.Backslash" |
+    "KeyboardChip.RightBracket" |
+    "KeyboardChip.Caret" |
+    "KeyboardChip.Underscore" |
+    "KeyboardChip.BackQuote" |
+    "KeyboardChip.A" |
+    "KeyboardChip.B" |
+    "KeyboardChip.C" |
+    "KeyboardChip.D" |
+    "KeyboardChip.E" |
+    "KeyboardChip.F" |
+    "KeyboardChip.G" |
+    "KeyboardChip.H" |
+    "KeyboardChip.I" |
+    "KeyboardChip.J" |
+    "KeyboardChip.K" |
+    "KeyboardChip.L" |
+    "KeyboardChip.M" |
+    "KeyboardChip.N" |
+    "KeyboardChip.O" |
+    "KeyboardChip.P" |
+    "KeyboardChip.Q" |
+    "KeyboardChip.R" |
+    "KeyboardChip.S" |
+    "KeyboardChip.T" |
+    "KeyboardChip.U" |
+    "KeyboardChip.V" |
+    "KeyboardChip.W" |
+    "KeyboardChip.X" |
+    "KeyboardChip.Y" |
+    "KeyboardChip.Z" |
+    "KeyboardChip.LeftCurlyBracket" |
+    "KeyboardChip.Pipe" |
+    "KeyboardChip.RightCurlyBracket" |
+    "KeyboardChip.Tilde" |
+    "KeyboardChip.Delete" |
+    "KeyboardChip.Keypad0" |
+    "KeyboardChip.Keypad1" |
+    "KeyboardChip.Keypad2" |
+    "KeyboardChip.Keypad3" |
+    "KeyboardChip.Keypad4" |
+    "KeyboardChip.Keypad5" |
+    "KeyboardChip.Keypad6" |
+    "KeyboardChip.Keypad7" |
+    "KeyboardChip.Keypad8" |
+    "KeyboardChip.Keypad9" |
+    "KeyboardChip.KeypadPeriod" |
+    "KeyboardChip.KeypadDivide" |
+    "KeyboardChip.KeypadMultiply" |
+    "KeyboardChip.KeypadMinus" |
+    "KeyboardChip.KeypadPlus" |
+    "KeyboardChip.KeypadEnter" |
+    "KeyboardChip.KeypadEquals" |
+    "KeyboardChip.Insert" |
+    "KeyboardChip.Home" |
+    "KeyboardChip.End" |
+    "KeyboardChip.PageUp" |
+    "KeyboardChip.PageDown" |
+    "KeyboardChip.F1" |
+    "KeyboardChip.F2" |
+    "KeyboardChip.F3" |
+    "KeyboardChip.F4" |
+    "KeyboardChip.F5" |
+    "KeyboardChip.F6" |
+    "KeyboardChip.F7" |
+    "KeyboardChip.F8" |
+    "KeyboardChip.F9" |
+    "KeyboardChip.F10" |
+    "KeyboardChip.F11" |
+    "KeyboardChip.F12" |
+    "KeyboardChip.F13" |
+    "KeyboardChip.F14" |
+    "KeyboardChip.F15" |
+    "KeyboardChip.Numlock" |
+    "KeyboardChip.CapsLock" |
+    "KeyboardChip.ScrollLock" |
+    "KeyboardChip.RightShift" |
+    "KeyboardChip.LeftShift" |
+    "KeyboardChip.RightControl" |
+    "KeyboardChip.LeftControl" |
+    "KeyboardChip.RightAlt" |
+    "KeyboardChip.LeftAlt" |
+    "KeyboardChip.RightCommand" |
+    "KeyboardChip.LeftCommand" |
+    "KeyboardChip.AltGr" |
+    "KeyboardChip.Help" |
+    "KeyboardChip.Print" |
+    "KeyboardChip.SysReq" |
+    "KeyboardChip.Break" |
     "KeyboardChip.Menu";
 
 type KeyboardChip = {
@@ -333,10 +332,10 @@ type RealityChip = {
 }
 
 type RomAssets = {
-    Assets: {[k: string]: Asset},
-    SpriteSheets: {[k: string]: SpriteSheet},
-    Codes: {[k: string]: Code},
-    AudioSamples: {[k: string]: AudioSample},
+    Assets: { [k: string]: Asset },
+    SpriteSheets: { [k: string]: SpriteSheet },
+    Codes: { [k: string]: Code },
+    AudioSamples: { [k: string]: AudioSample },
 }
 
 type ROM = {
@@ -344,7 +343,7 @@ type ROM = {
     System: RomAssets
 }
 
-type SecurityChip = { }
+type SecurityChip = {}
 
 /**
  * VideoChip rendering mode.
@@ -459,11 +458,11 @@ type Wifi = {
     /**
      * Send a web HTTP POST request, return a numeric handle to identify the request
      */
-    WebPostForm(url: string, data: {[k: string]: any}): number,
+    WebPostForm(url: string, data: { [k: string]: any }): number,
     /**
      * Send a web request, return a numeric handle to identify the request
      */
-    WebCustomRequest(url: string, method: string, customHeaderField: {[k: string]: string}, contentType: string, contentData: string): number,
+    WebCustomRequest(url: string, method: string, customHeaderField: { [k: string]: string }, contentType: string, contentData: string): number,
     /**
      * Abort a web request
      */

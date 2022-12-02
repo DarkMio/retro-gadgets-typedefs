@@ -3,6 +3,10 @@
       "rootDir": "examples",
       "outDir": "compiled",
       "target": "esnext",
+
+
+
+
       "types": [
         // this lua library is missing:
         // coroutine, debug, io, (metatables,) modules, os 
@@ -11,6 +15,7 @@
         "lua-types/core/string",
         "lua-types/core/table",
         "lua-types/special/5.1",
+        "../typedefs"
       ],
       "lib": ["esnext"],
       "moduleResolution": "node",
@@ -19,7 +24,6 @@
     },
     "include": [
         "examples/**/*.ts",
-        "../typedefs/retro-gadgets.d.ts"
     ],
     "tstl": {
       // this is somewhat incorrect, but gives bitshift operators present in
@@ -28,7 +32,5 @@
       "luaLibImport": "require",
       "noImplicitSelf": true,
       "noHeader": true,
-      "luaBundle": "./compiled/gameboy.lua",
-      "luaBundleEntry": "./examples/gameboy/device.ts"
     }
 }

@@ -1,7 +1,6 @@
+/// Outputs
+/// https://docs.retrogadgets.game/api/moduleCategories/Output.html
 
-/*
- * Outputs
- */
 type Gauge = {
     /**
      * Position 0-100
@@ -17,11 +16,11 @@ type Lcd = {
     /**
      * Background color for the Lcd.
      */
-    BgColor: Color,
+    BgColor: color,
     /**
      * The color for thew displayed text.
      */
-    TextColor: Color
+    TextColor: color
 }
 
 type Led = {
@@ -50,7 +49,9 @@ type LedStrip<N extends number> = {
 }
 
 type LedStrip8 = LedStrip<8>;
+
 type LedStrip5 = LedStrip<5>;
+
 type LedStrip4 = LedStrip<4>;
 
 type Screen = {
@@ -72,7 +73,7 @@ type SegmentDisplay<N extends number> = {
      * A table that maps the color of all the Leds in the display.
      */
     Colors: FixedSizeArray<N, color>,
-    ShowDigit(groupIndex: IntRange<0, N>,  digit: number),
+    ShowDigit(groupIndex: IntRange<0, N>, digit: number),
     SetDigitColor(groupIndex: IntRange<0, N>, color: color)
 }
 
@@ -83,8 +84,11 @@ type SegmentDisplay<N extends number> = {
  * 3, 4: minutes
  */
 type SegmentDisplay5 = SegmentDisplay<5>;
+
 type SegmentDisplay4 = SegmentDisplay<4>;
+
 type SegmentDisplay2 = SegmentDisplay<2>;
+
 type SegmentDisplay1 = SegmentDisplay<1>;
 
 type Speaker = {

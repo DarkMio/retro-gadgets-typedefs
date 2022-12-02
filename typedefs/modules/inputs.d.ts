@@ -1,23 +1,7 @@
-type InputSource = DirectionalInput|
-    ClickButton |
-    MovingButton |
-    Stick |
-    DPad |
-    Keypad |
-    Knob |
-    LedButton |
-    ScreenButton |
-    Slider |
-    Switch |
-    Webcam;
+/// Inputs
+/// https://docs.retrogadgets.game/api/moduleCategories/Input.html
 
-
-
-
-/*
- * Inputs
- */
-type DirectionalInput = {
+type DirectionalInput = ModuleBrand & {
     /**
      * The position of the stick along the X axis, ranging from -100 to 100
      * @remark this is a floating point
@@ -32,7 +16,7 @@ type DirectionalInput = {
     InputSourceY?: InputSource,
 }
 
-type ClickButton = {
+type ClickButton = ModuleBrand & {
     InputSource: InputSource;
     /**
      * The pressed/released state of the button.
@@ -48,7 +32,7 @@ type ClickButton = {
     readonly ButtonUp: boolean,
 }
 
-type MovingButton = {
+type MovingButton = ModuleBrand & {
     /**
      * The actual positional value of the Knob, ranging from -100 to 100
      */
@@ -71,7 +55,7 @@ type DPad = DirectionalInput & {
     InputSourceY: undefined,
 }
 
-type Keypad = {
+type Keypad = ModuleBrand & {
     /**
      * A multi-dimensional table mapping the state of each button to a boolean value.
      * The table must be addressed with [column][row]. A value of true means that the
@@ -107,7 +91,7 @@ type LedButton = ClickButton & {
     /**
      * The color of the Led.
      */
-    LedColor: Color,
+    LedColor: color,
     Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
 }
 
@@ -123,7 +107,7 @@ type ScreenButton = ClickButton & {
 
 type Slider = MovingButton;
 
-type Switch = {
+type Switch = ModuleBrand & {
     /**
      * The state of this switch.
      */
@@ -132,7 +116,7 @@ type Switch = {
     Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
 }
 
-type Webcam = {
+type Webcam = ModuleBrand & {
     /**
      * The VideoChip this camera is streaming contents to.
      */
@@ -145,3 +129,4 @@ type Webcam = {
      */
     GetRenderBuffer(): RenderBuffer
 }
+
