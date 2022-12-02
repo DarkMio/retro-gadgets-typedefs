@@ -23,3 +23,6 @@ Defines the API found at https://docs.retrogadgets.game/api/index.html
 
 ![](docs/bin-clock.gif)  
 `examples/binary-clock.ts` shows a simple counter that slowly counts to 256 and resets
+
+![](docs/button-test.gif)  
+`examples-button-test` shows how to make `import` in typescript works

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "esnext",
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "types": ["lua-types/5.1"],
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "../typedefs/**/*.d.ts"
+  ],
+  "tstl": {
+    "luaTarget": "5.1",
+    "noImplicitSelf": true,
+    "noHeader": true,
+    "luaLibImport": "inline",
+    "luaPlugins": [
+      { "name": "./plugins/del_local_before_update.js" }
+    ]
+  }
+}

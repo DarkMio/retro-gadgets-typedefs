@@ -1,0 +1,16 @@
+{
+  "name": "button-test",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "tstl",
+    "dev": "tstl --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "lua-types": "^2.13.1",
+    "typescript-to-lua": "^1.11.1"
+  }
+}
