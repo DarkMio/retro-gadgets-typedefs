@@ -1,12 +1,23 @@
+/**
+ * Imports
+ */
+import { ROM, Stick, Keypad, Knob, LedButton, ScreenButton, Slider, Switch, Webcam, Gauge, Lcd, Led, LedMatrix, Speaker, AudioChip, CPU, Decoration, FlashMemory, GamepadChip, KeyboardChip, MagneticConnector, PowerButton, RealityChip, SecurityChip, VideoChip, Wifi, LedStrip, SegmentDisplay } from "./types";
+
 /*
  * Based on IntRange from here:
  * https://stackoverflow.com/a/39495173
  */
-type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
-  ? Acc[number]
-  : Enumerate<N, [...Acc, Acc['length']]>
+type IntRangeEnumerate<
+	N extends number,
+	Acc extends number[] = [],
+> = Acc['length'] extends N
+	? Acc[number]
+	: IntRangeEnumerate<N, [...Acc, Acc['length']]>;
 
-type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
+type IntRange<F extends number, T extends number> = Exclude<
+	IntRangeEnumerate<T>,
+	IntRangeEnumerate<F>
+>;
 
 /*
  * From:
@@ -16,7 +27,7 @@ type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumer
  * An array in a fixed size of `N` of type `T`
  */
 type FixedSizeArray<N extends number, T> = {
-    readonly [k in Enumerate<N>]: T;
+	readonly [k in IntRangeEnumerate<N>]: T;
 } & { length: N };
 
 /**

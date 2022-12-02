@@ -1,3 +1,9 @@
+/**
+ * Imports
+ */
+import { IntRange } from "./helpers";
+import { color, ANSIColors, Desk, PowerButton } from "./types";
+
 /*
  * Global Methods
  */
