@@ -1,4 +1,6 @@
-import { WithCPU, WithLcd, WithVideoChip } from "../../typedefs/helpers";
+import { Gadget } from "../../typedefs/functions";
+import { IntRange, WithCPU, WithLcd, WithVideoChip } from "../../typedefs/helpers";
+import { VideoChip, vec2 } from "../../typedefs/types";
 
 class Vector {
     constructor(public x: number,
@@ -23,26 +25,29 @@ class Vector {
 }
 
 class ColorTS {
-    constructor(public r: number,
-                public g: number,
-                public b: number) {
-    }
-    static scale(k: number, v: ColorTS) { return new ColorTS(k * v.r, k * v.g, k * v.b); }
-    static plus(v1: ColorTS, v2: ColorTS) { return new ColorTS(v1.r + v2.r, v1.g + v2.g, v1.b + v2.b); }
-    static times(v1: ColorTS, v2: ColorTS) { return new ColorTS(v1.r * v2.r, v1.g * v2.g, v1.b * v2.b); }
-    static white = new ColorTS(1.0, 1.0, 1.0);
-    static grey = new ColorTS(0.5, 0.5, 0.5);
-    static black = new ColorTS(0.0, 0.0, 0.0);
-    static background = ColorTS.black;
-    static defaultColor = ColorTS.black;
-    static toDrawingColor(c: ColorTS) {
-        const legalize = (d: number) => d > 1 ? 1 : d;
-        return {
-            r: Math.floor(legalize(c.r) * 255),
-            g: Math.floor(legalize(c.g) * 255),
-            b: Math.floor(legalize(c.b) * 255)
-        }
-    }
+	constructor(public r: number, public g: number, public b: number) {}
+	static scale(k: number, v: ColorTS) {
+		return new ColorTS(k * v.r, k * v.g, k * v.b);
+	}
+	static plus(v1: ColorTS, v2: ColorTS) {
+		return new ColorTS(v1.r + v2.r, v1.g + v2.g, v1.b + v2.b);
+	}
+	static times(v1: ColorTS, v2: ColorTS) {
+		return new ColorTS(v1.r * v2.r, v1.g * v2.g, v1.b * v2.b);
+	}
+	static white = new ColorTS(1.0, 1.0, 1.0);
+	static grey = new ColorTS(0.5, 0.5, 0.5);
+	static black = new ColorTS(0.0, 0.0, 0.0);
+	static background = ColorTS.black;
+	static defaultColor = ColorTS.black;
+	static toDrawingColor(c: ColorTS) {
+		const legalize = (d: number) => (d > 1 ? 1 : d);
+		return {
+			r: <IntRange<0, 256>>Math.floor(legalize(c.r) * 255),
+			g: <IntRange<0, 256>>Math.floor(legalize(c.g) * 255),
+			b: <IntRange<0, 256>>Math.floor(legalize(c.b) * 255),
+		};
+	}
 }
 
 class Camera {

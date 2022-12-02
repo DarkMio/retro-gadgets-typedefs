@@ -1,4 +1,6 @@
+import { Gadget, MultitoolConnector } from "../../typedefs/functions";
 import { WithLeds } from "../../typedefs/helpers";
+import { PowerButton, Led } from "../../typedefs/types";
 
 const LEDCount = 5;
 type Board = Gadget & WithLeds<typeof LEDCount>;
