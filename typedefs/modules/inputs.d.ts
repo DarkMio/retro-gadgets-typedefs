@@ -1,7 +1,7 @@
 /// Inputs
 /// https://docs.retrogadgets.game/api/moduleCategories/Input.html
 
-type DirectionalInput = ModuleBrand & {
+type DirectionalInput = __ModuleBrand & {
     /**
      * The position of the stick along the X axis, ranging from -100 to 100
      * @remark this is a floating point
@@ -16,7 +16,7 @@ type DirectionalInput = ModuleBrand & {
     InputSourceY?: InputSource,
 }
 
-type ClickButton = ModuleBrand & {
+type ClickButton = __ModuleBrand & {
     InputSource: InputSource;
     /**
      * The pressed/released state of the button.
@@ -32,7 +32,7 @@ type ClickButton = ModuleBrand & {
     readonly ButtonUp: boolean,
 }
 
-type MovingButton = ModuleBrand & {
+type MovingButton = __ModuleBrand & {
     /**
      * The actual positional value of the Knob, ranging from -100 to 100
      */
@@ -55,7 +55,7 @@ type DPad = DirectionalInput & {
     InputSourceY: undefined,
 }
 
-type Keypad = ModuleBrand & {
+type Keypad = __ModuleBrand & {
     /**
      * A multi-dimensional table mapping the state of each button to a boolean value.
      * The table must be addressed with [column][row]. A value of true means that the
@@ -107,7 +107,7 @@ type ScreenButton = ClickButton & {
 
 type Slider = MovingButton;
 
-type Switch = ModuleBrand & {
+type Switch = __ModuleBrand & {
     /**
      * The state of this switch.
      */
@@ -116,7 +116,7 @@ type Switch = ModuleBrand & {
     Symbol: undefined, // Symbol, the docs describe it, but accessing it is a RuntimeError
 }
 
-type Webcam = ModuleBrand & {
+type Webcam = __ModuleBrand & {
     /**
      * The VideoChip this camera is streaming contents to.
      */

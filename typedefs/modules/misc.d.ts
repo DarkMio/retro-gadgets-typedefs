@@ -1,7 +1,7 @@
 /// Misc
 /// https://docs.retrogadgets.game/api/moduleCategories/Misc.html
 
-type AudioChip = {
+type AudioChip = __ModuleBrand & {
     /**
      * Number of available channels for this AudioChip. Each channel can independently play an audio sample.
      */
@@ -86,7 +86,7 @@ type AudioChip = {
     GetChannelPitch(channel: number): number
 }
 
-type CPU = {
+type CPU = __ModuleBrand & {
     /**
      * The code asset uploaded to the cpu.
      */
@@ -102,9 +102,9 @@ type CPU = {
     EventChannels: Module[]
 }
 
-type Decoration = {}
+type Decoration = __ModuleBrand & {}
 
-type FlashMemory<T> = {
+type FlashMemory<T> = __ModuleBrand & {
     readonly Size: number,
     readonly Usage: number,
     Save(table: T[]): boolean,
@@ -135,7 +135,7 @@ type InputName = "GamepadChip.LeftStickX" |
     "GamepadChip.DPadDown" |
     "GamepadChip.DPadLeft";
 
-type GamepadChip = {
+type GamepadChip = __ModuleBrand & {
     GamepadIndex: number,
     readonly IsActive: number,
     GetButton(name: InputName): InputSource,
@@ -278,12 +278,12 @@ type KeyboardButtonName = "KeyboardChip.Return" |
     "KeyboardChip.Break" |
     "KeyboardChip.Menu";
 
-type KeyboardChip = {
+type KeyboardChip = __ModuleBrand & {
     GetButton(name: KeyboardButtonName): InputSource,
     GetButtonAxis(negativeName: KeyboardButtonName, positiveName: KeyboardButtonName): InputSource
 }
 
-type MagneticConnector = {
+type MagneticConnector = __ModuleBrand & {
     /**
      * Reflect the pressed/released state of the connector's button.
      */
@@ -294,12 +294,12 @@ type MagneticConnector = {
     readonly IsConnected: boolean
 }
 
-type PowerButton = {
+type PowerButton = __ModuleBrand & {
     readonly ButtonState: boolean
 }
 
-type RealityChip = {
-    Cpu: {
+type RealityChip = __ModuleBrand & {
+    readonly Cpu: {
         /**
          * The total CPU usage of the system 0-100
          */
@@ -309,7 +309,7 @@ type RealityChip = {
          */
         CoresUsage: number
     },
-    Ram: {
+    readonly Ram: {
         /**
          * Available RAM expressed in MB
          */
@@ -319,7 +319,7 @@ type RealityChip = {
          */
         Used: number
     },
-    Network: {
+    readonly Network: {
         /**
          * Total sent by network interfaces expressed in Mbps
          */
@@ -331,19 +331,19 @@ type RealityChip = {
     }
 }
 
-type RomAssets = {
-    Assets: { [k: string]: Asset },
-    SpriteSheets: { [k: string]: SpriteSheet },
-    Codes: { [k: string]: Code },
-    AudioSamples: { [k: string]: AudioSample },
+type __RomAssets = {
+    readonly Assets: { [k: string]: Asset },
+    readonly SpriteSheets: { [k: string]: SpriteSheet },
+    readonly Codes: { [k: string]: Code },
+    readonly AudioSamples: { [k: string]: AudioSample },
 }
 
-type ROM = {
-    User: RomAssets,
-    System: RomAssets
+type ROM = __ModuleBrand & {
+    readonly User: __RomAssets,
+    readonly System: __RomAssets
 }
 
-type SecurityChip = {}
+type SecurityChip = __ModuleBrand & {}
 
 /**
  * VideoChip rendering mode.
@@ -353,7 +353,7 @@ declare enum VideoChipMode {
     "DoubleBuffer"
 }
 
-type VideoChip = {
+type VideoChip = __ModuleBrand & {
     /**
      * The SingleBuffer/DoubleBuffer mode for this VideoChip.
      */
@@ -441,7 +441,7 @@ type VideoChip = {
     DrawRenderBuffer(position: vec2, renderBuffer: RenderBuffer, width: number, height: number): void
 }
 
-type Wifi = {
+type Wifi = __ModuleBrand & {
     readonly AccessDenied: boolean,
     /**
      * Send a web HTTP GET request, return a numeric handle to identify the request

@@ -9,17 +9,17 @@ type Asset = SpriteSheet |
     AudioSample |
     Palette;
 
-type SpriteSheet = ModuleBrand & {
+type SpriteSheet = __ModuleBrand & {
     Palatte: Palette
 }
 
-type RenderBuffer = ModuleBrand & {}
+type RenderBuffer = __ModuleBrand & {}
 
 type Code = {
     __assetBrand: never
 }
 
-type AudioSample = ModuleBrand & {
+type AudioSample = __ModuleBrand & {
     SamplesCount: number,
     Channels: number,
     Frequency: number,
@@ -29,4 +29,4 @@ type AudioSample = ModuleBrand & {
     Length: number
 }
 
-type Palette = ModuleBrand & {}
+type Palette = __ModuleBrand & {}

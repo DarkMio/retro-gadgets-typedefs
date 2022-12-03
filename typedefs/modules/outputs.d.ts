@@ -1,14 +1,14 @@
 /// Outputs
 /// https://docs.retrogadgets.game/api/moduleCategories/Output.html
 
-type Gauge = {
+type Gauge = __ModuleBrand & {
     /**
      * Position 0-100
      */
     Value: number
 }
 
-type Lcd = {
+type Lcd = __ModuleBrand & {
     /**
      * The text to be visualized on the Lcd.
      */
@@ -23,7 +23,7 @@ type Lcd = {
     TextColor: color
 }
 
-type Led = {
+type Led = __ModuleBrand & {
     /**
      * Led on/off state
      */
@@ -34,7 +34,7 @@ type Led = {
     Color: color
 }
 
-type LedMatrix = {
+type LedMatrix = __ModuleBrand & {
     /**
      * A multi-dimensional table that maps all the Led lit/unlit stattus. Should be addressed with [column][row]
      * @remark LedMatrix is of size [8, 8]
@@ -43,7 +43,7 @@ type LedMatrix = {
     Colors: FixedSizeArray<8, FixedSizeArray<8, color>>
 }
 
-type LedStrip<N extends number> = {
+type LedStrip<N extends number> = __ModuleBrand & {
     States: FixedSizeArray<N, boolean>,
     Colors: FixedSizeArray<N, boolean>
 }
@@ -54,7 +54,7 @@ type LedStrip5 = LedStrip<5>;
 
 type LedStrip4 = LedStrip<4>;
 
-type Screen = {
+type Screen = __ModuleBrand & {
     /**
      * The videochip this screen is bound to.
      */
@@ -64,7 +64,7 @@ type Screen = {
     readonly Height: number,
 }
 
-type SegmentDisplay<N extends number> = {
+type SegmentDisplay<N extends number> = __ModuleBrand & {
     /**
      * A table that maps the lit/unlit state of all the Leds in the display.
      */
@@ -91,6 +91,6 @@ type SegmentDisplay2 = SegmentDisplay<2>;
 
 type SegmentDisplay1 = SegmentDisplay<1>;
 
-type Speaker = {
+type Speaker = __ModuleBrand & {
     State: boolean
 }

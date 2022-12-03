@@ -3,7 +3,7 @@
 /**
  * Module brand to avoid accidential object instantiation for modules
  */
-type ModuleBrand = {
+type __ModuleBrand = {
     /**
      * Virtual, non existing property that guards against accidential instantiation
      */

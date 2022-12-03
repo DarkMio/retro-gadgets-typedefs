@@ -2,7 +2,7 @@
 /*
  * Globals
  */
-type Desk = ModuleBrand & {
+type Desk = __ModuleBrand & {
     /**
      * Return true if the lamp is on
      */
@@ -24,9 +24,9 @@ declare let update: () => void;
 /*
  * Undocumented
  */
-type MultitoolConnector = ModuleBrand & {}
+type MultitoolConnector = __ModuleBrand & {}
 
-type Gadget = ModuleBrand & {
+type Gadget = __ModuleBrand & {
     MultitoolConnector: MultitoolConnector,
     PowerButton: PowerButton,
     // the following can be any number of components with their name and number attached
