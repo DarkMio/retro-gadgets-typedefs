@@ -336,7 +336,7 @@ type RealityChip = __ModuleBrand & {
     };
 };
 
-type __RomAssets = {
+type RomAssets = {
     readonly Assets: { [k: string]: Asset };
     readonly SpriteSheets: { [k: string]: SpriteSheet };
     readonly Codes: { [k: string]: Code };
@@ -344,8 +344,8 @@ type __RomAssets = {
 };
 
 type ROM = __ModuleBrand & {
-    readonly User: __RomAssets;
-    readonly System: __RomAssets;
+    readonly User: RomAssets;
+    readonly System: RomAssets;
 };
 
 type SecurityChip = __ModuleBrand & {};
