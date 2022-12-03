@@ -28,31 +28,31 @@ type AudioChip = __ModuleBrand & {
     /**
      * Immediately plays an AudioSample on a specific `channel`.
      */
-    Play(audioSample: AudioSample, channel: number);
+    Play(audioSample: AudioSample, channel: number): void;
     /**
      * Schedule the play of and AudioSample at a specific DSP time, expressed in seconds, on the specific channel.
      */
-    PlaySchedules(audioSample: AudioSample, channel: number, dspTime: number);
+    PlaySchedules(audioSample: AudioSample, channel: number, dspTime: number): void;
     /**
      * Immediately plays an AudioSample on a specific channel, looping it.
      */
-    PlayLoop(audioSample: AudioSample, channel: number);
+    PlayLoop(audioSample: AudioSample, channel: number): void;
     /**
      * Schedule the play of and AudioSample at a specific DSP time, expressed in seconds, on the specific `channel`, looping it.
      */
-    PlayLoopSchedules(audioSample: AudioSample, channel: number, dspTime: number);
+    PlayLoopSchedules(audioSample: AudioSample, channel: number, dspTime: number): void;
     /**
      * Stops any audio playing on a specific `channel`
      */
-    Stop(channel: number);
+    Stop(channel: number): void;
     /**
      * Pause the audio on a specific `channel`
      */
-    Pause(channel: number);
+    Pause(channel: number): void;
     /**
      * Resumes the audio on a specific `channel`
      */
-    UnPause(channel: number);
+    UnPause(channel: number): void;
     /**
      * Returns `true` if a `channel` is currently playing audio
      */
@@ -68,11 +68,11 @@ type AudioChip = __ModuleBrand & {
     /**
      * Sets the current position of the play head, for the specific `channel`, expressed in seconds.
      */
-    SeekPlayTime(time: number, channel: number);
+    SeekPlayTime(time: number, channel: number): void;
     /**
      * Sets the current `volume` for a `channel`, 0-100 range.
      */
-    SetChannelVolume(volume: IntRange<0, 100>, channel: number);
+    SetChannelVolume(volume: IntRange<0, 100>, channel: number): void;
     /**
      * Gets the current volume for a channel, 0-100 range.
      */
@@ -82,7 +82,7 @@ type AudioChip = __ModuleBrand & {
      * A value of 1 means the default `pitch` for a sample,
      * a value of 2 plays the sample one octave higher.
      */
-    SetChannelPitch(pitch: number, channel: number);
+    SetChannelPitch(pitch: number, channel: number): void;
     /**
      * Gets the current pitch of a `channel`.
      */
@@ -110,8 +110,8 @@ type Decoration = __ModuleBrand & {};
 type FlashMemory<T> = __ModuleBrand & {
     readonly Size: number;
     readonly Usage: number;
-    Save(table: T[]): boolean;
-    Load(table): T[];
+    Save(table: any): boolean;
+    Load(): T[];
 };
 
 type InputName =
@@ -521,5 +521,5 @@ type Wifi = __ModuleBrand & {
     /**
      * Only cookies that apply to this url will be removed from the cache
      */
-    GetUrlCookieCache(url: string);
+    ClearUrlCookieCache(url: string): void;
 };

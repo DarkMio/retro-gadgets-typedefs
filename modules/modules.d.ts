@@ -34,7 +34,6 @@ type Module =
     | MagneticConnector
     | PowerButton
     | RealityChip
-    | RomAssets
     | ROM
     | SecurityChip
     | VideoChip

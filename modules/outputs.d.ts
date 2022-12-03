@@ -73,8 +73,8 @@ type SegmentDisplay<N extends number> = __ModuleBrand & {
      * A table that maps the color of all the Leds in the display.
      */
     Colors: FixedSizeArray<N, color>;
-    ShowDigit(groupIndex: IntRange<1, N>, digit: number);
-    SetDigitColor(groupIndex: IntRange<1, N>, color: color);
+    ShowDigit(groupIndex: IntRange<1, N>, digit: number): void;
+    SetDigitColor(groupIndex: IntRange<1, N>, color: color): void;
 };
 
 /**
