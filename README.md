@@ -7,10 +7,7 @@ Defines the API found at https://docs.retrogadgets.game/api/index.html
 
 ## Todo:
 
-- Add docstrings
 - scrape doc pages for typedef generation
-- adding typedefs for missing APIs (for example `gdt: Gadget`)
-- generator/descriptor for gadgets (CPU0, CPU1, CPU2 ...)
 - generators for keypad and similar m*n constructs
 
 
