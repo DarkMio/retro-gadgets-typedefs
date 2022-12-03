@@ -3,100 +3,102 @@
 /// all CPUs share the same magic eventChannelXX callback bus
 
 type StickValueChangeEvent = {
-    X: number,
-    Y: number,
-    Type: "StickValueChangeEvent"
+    X: number;
+    Y: number;
+    Type: 'StickValueChangeEvent';
 };
 type DPadValueChangeEvent = {
-    X: number,
-    Y: number,
-    Type: "DPadValueChangeEvent"
+    X: number;
+    Y: number;
+    Type: 'DPadValueChangeEvent';
 };
 type KeypadButtonEvent = {
-    X: number,
-    Y: number,
-    ButtonDown: boolean,
-    Type: "KeypadButtonEvent"
+    X: number;
+    Y: number;
+    ButtonDown: boolean;
+    Type: 'KeypadButtonEvent';
 };
 type KnobValueChangeEvent = {
-    value: number,
-    Type: "KnobValueChangeEvent"
+    value: number;
+    Type: 'KnobValueChangeEvent';
 };
 type LedButtonEvent = {
-    ButtonDown: boolean,
-    ButtonUp: boolean,
-    Type: "LedButtonEvent"
+    ButtonDown: boolean;
+    ButtonUp: boolean;
+    Type: 'LedButtonEvent';
 };
 type ScreenButtonEvent = {
-    ButtonDown: boolean,
-    ButtonUp: boolean,
-    Type: "ScreenButtonEvent"
+    ButtonDown: boolean;
+    ButtonUp: boolean;
+    Type: 'ScreenButtonEvent';
 };
 type SliderValueChangeEvent = {
-    Value: number,
-    Type: "SliderValueChangeEvent"
+    Value: number;
+    Type: 'SliderValueChangeEvent';
 };
 type SwitchStateChangeEvent = {
-    State: boolean,
-    Type: "SwitchStateChangeEvent"
+    State: boolean;
+    Type: 'SwitchStateChangeEvent';
 };
 
 type WebcamIsActiveEvent = {
-    IsActive: boolean,
-    IsAvailable: boolean,
-    AccessDenied: boolean,
-    Type: "WebcamIsActiveEvent"
+    IsActive: boolean;
+    IsAvailable: boolean;
+    AccessDenied: boolean;
+    Type: 'WebcamIsActiveEvent';
 };
 type KeyboardChipEvent = {
-    ButtonDown: boolean,
-    ButtonUp: boolean,
-    InputName: KeyboardButtonName,
-    Type: "KeyboardChipEvent"
+    ButtonDown: boolean;
+    ButtonUp: boolean;
+    InputName: KeyboardButtonName;
+    Type: 'KeyboardChipEvent';
 };
 type GamepadChipButtonEvent = {
-    ButtonDown: boolean,
-    ButtonUp: boolean,
-    IsAxis: boolean,
-    InputName: InputName,
-    Type: "GamepadChipButtonEvent"
+    ButtonDown: boolean;
+    ButtonUp: boolean;
+    IsAxis: boolean;
+    InputName: InputName;
+    Type: 'GamepadChipButtonEvent';
 };
 type GamepadChipIsActiveEvent = {
-    IsActive: boolean,
-    Type: "GamepadChipIsActiveEvent"
+    IsActive: boolean;
+    Type: 'GamepadChipIsActiveEvent';
 };
 type WifiWebResponseEvent = {
-    RequestHandle: number,
-    ResponseCode: number,
-    IsError: boolean,
-    ErrorType: string,
-    ErrorMessage: string,
-    ContentType: string,
-    Text: string,
-    Type: "WifiWebResponseEvent"
+    RequestHandle: number;
+    ResponseCode: number;
+    IsError: boolean;
+    ErrorType: string;
+    ErrorMessage: string;
+    ContentType: string;
+    Text: string;
+    Type: 'WifiWebResponseEvent';
 };
-type EventSources = Wifi |
-    KeyboardChip |
-    GamepadChip |
-    Slider |
-    ScreenButton |
-    Knob |
-    Keypad |
-    DPad |
-    Stick |
-    Webcam;
-type EventTypes = StickValueChangeEvent |
-    DPadValueChangeEvent |
-    KeypadButtonEvent |
-    KnobValueChangeEvent |
-    LedButtonEvent |
-    ScreenButtonEvent |
-    SliderValueChangeEvent |
-    SwitchStateChangeEvent |
-    WebcamIsActiveEvent |
-    KeyboardChipEvent |
-    GamepadChipButtonEvent |
-    GamepadChipIsActiveEvent |
-    WifiWebResponseEvent;
+type EventSources =
+    | Wifi
+    | KeyboardChip
+    | GamepadChip
+    | Slider
+    | ScreenButton
+    | Knob
+    | Keypad
+    | DPad
+    | Stick
+    | Webcam;
+type EventTypes =
+    | StickValueChangeEvent
+    | DPadValueChangeEvent
+    | KeypadButtonEvent
+    | KnobValueChangeEvent
+    | LedButtonEvent
+    | ScreenButtonEvent
+    | SliderValueChangeEvent
+    | SwitchStateChangeEvent
+    | WebcamIsActiveEvent
+    | KeyboardChipEvent
+    | GamepadChipButtonEvent
+    | GamepadChipIsActiveEvent
+    | WifiWebResponseEvent;
 
 type EventCallback = (sender: EventSources, arg: EventTypes) => any;
 declare let eventChannel1: EventCallback;
@@ -163,4 +165,3 @@ declare let eventChannel61: EventCallback;
 declare let eventChannel62: EventCallback;
 declare let eventChannel63: EventCallback;
 declare let eventChannel64: EventCallback;
-

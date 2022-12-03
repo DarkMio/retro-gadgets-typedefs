@@ -9,7 +9,7 @@
  * [0,232 - 1]. Note that bit32.bnot(0) is 0xFFFFFFFF, which is different from
  * -1.
  */
- declare namespace bit32 {
+declare namespace bit32 {
     /**
      * Returns the number x shifted disp bits to the right. The number disp may be
      * any representable integer. Negative displacements shift to the left.

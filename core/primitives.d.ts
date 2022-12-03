@@ -12,26 +12,26 @@ declare namespace color {
 }
 
 type color = __ModuleBrand & {
-    A: number,
-    B: number,
-    G: number,
-    R: number
-}
+    A: number;
+    B: number;
+    G: number;
+    R: number;
+};
 
-declare function vec2(this: void, x: number, y: number): vec2
+declare function vec2(this: void, x: number, y: number): vec2;
 
 type vec2 = __ModuleBrand & {
-    X: number,
-    Y: number
-}
+    X: number;
+    Y: number;
+};
 
-declare function vec3(this: void, x: number, y: number, z: number): vec3
+declare function vec3(this: void, x: number, y: number, z: number): vec3;
 
 type vec3 = __ModuleBrand & {
-    X: number,
-    Y: number,
-    Z: number
-}
+    X: number;
+    Y: number;
+    Z: number;
+};
 
 type AnsiBlack = 30;
 type AnsiDarkRed = 31;
@@ -50,4 +50,20 @@ type AnsiMagenta = 95;
 type AnsiCyan = 96;
 type AnsiWhite = 97;
 
-type ANSIColors = AnsiBlack | AnsiDarkRed | AnsiDarkGreen | AnsiDarkYellow | AnsiDarkBlue | AnsiDarkMagenta | AnsiDarkCyan | AnsiLightGray | AnsiDarkGray | AnsiRed | AnsiGreen | AnsiOrange | AnsiBlue | AnsiMagenta | AnsiCyan | AnsiWhite;
+type ANSIColors =
+    | AnsiBlack
+    | AnsiDarkRed
+    | AnsiDarkGreen
+    | AnsiDarkYellow
+    | AnsiDarkBlue
+    | AnsiDarkMagenta
+    | AnsiDarkCyan
+    | AnsiLightGray
+    | AnsiDarkGray
+    | AnsiRed
+    | AnsiGreen
+    | AnsiOrange
+    | AnsiBlue
+    | AnsiMagenta
+    | AnsiCyan
+    | AnsiWhite;

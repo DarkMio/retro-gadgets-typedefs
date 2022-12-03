@@ -3,30 +3,26 @@
 /// they're essentially entirely virtual and are cannot be instantiated
 /// the __assetBrand guards against uninentional instantiation
 
-type Asset = SpriteSheet |
-    RenderBuffer |
-    Code |
-    AudioSample |
-    Palette;
+type Asset = SpriteSheet | RenderBuffer | Code | AudioSample | Palette;
 
 type SpriteSheet = __ModuleBrand & {
-    Palatte: Palette
-}
+    Palatte: Palette;
+};
 
-type RenderBuffer = __ModuleBrand & {}
+type RenderBuffer = __ModuleBrand & {};
 
 type Code = {
-    __assetBrand: never
-}
+    __assetBrand: never;
+};
 
 type AudioSample = __ModuleBrand & {
-    SamplesCount: number,
-    Channels: number,
-    Frequency: number,
+    SamplesCount: number;
+    Channels: number;
+    Frequency: number;
     /**
      * Length of the AudioSample in seconds
      */
-    Length: number
-}
+    Length: number;
+};
 
-type Palette = __ModuleBrand & {}
+type Palette = __ModuleBrand & {};
